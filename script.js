@@ -4,19 +4,16 @@ const filaDois = document.querySelectorAll(".box-dois");
 const filaTres = document.querySelectorAll(".box-tres");
 let arrayTabuleiro = [...tab];
 let quantidadeDeClicks = 0;
-let img;
 let playerX = 0;
-let playerO;
+let playerO = 0;
+
 const players = () => {
   arrayTabuleiro.forEach((posicao) => {
-    // console.log(posicao);
-
+    let img;
     posicao.addEventListener("click", function () {
       quantidadeDeClicks = quantidadeDeClicks + 1;
 
-      // console.log("quantidadeDeClicks", quantidadeDeClicks);
       if (quantidadeDeClicks % 2 !== 0) {
-        // console.log("jogador X");
         img = document.createElement("img");
         img.src = "/XXX.jpg";
         img.width = 70;
@@ -26,7 +23,6 @@ const players = () => {
       }
 
       if (quantidadeDeClicks % 2 === 0) {
-        // console.log("jogador O");
         img = document.createElement("img");
         img.src = "/OOO.jpg";
         img.width = 70;
