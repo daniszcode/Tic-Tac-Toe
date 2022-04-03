@@ -5,8 +5,8 @@ const filaTres = document.querySelectorAll(".box-tres");
 let arrayTabuleiro = [...tab];
 let quantidadeDeClicks = 0;
 let img;
-let quantidadeDeItem = 0;
-
+let playerX = 0;
+let playerO;
 const players = () => {
   arrayTabuleiro.forEach((posicao) => {
     // console.log(posicao);
@@ -43,70 +43,48 @@ players();
 const regrasDoJogo = () => {
   arrayTabuleiro.forEach((posicao) => {
     posicao.addEventListener("click", function () {
-      // console.log("arrayTabuleiro", arrayTabuleiro);
-      let objDeJogadores = [
-        {
-          pos1: "",
-          pos2: "",
-          pos3: "",
-          pos4: "",
-          pos5: "",
-          pos6: "",
-          pos8: "",
-          pos9: "",
-        },
-      ];
       const indice = arrayTabuleiro.indexOf(posicao);
       console.log("indice", indice);
       const classItemdentrodaDiv =
         arrayTabuleiro[indice].lastElementChild.className;
-      for (let obj in objDeJogadores) {
-        // objDeJogadores[i].pos1.keys = indice;
-        obj[indice] = classItemdentrodaDiv;
-      }
+      console.log("arrayTabuleiro[indice]");
 
       classItemdentrodaDiv === "X"
-        ? (quantidadeDeItem = quantidadeDeItem + 1)
-        : false;
+        ? (playerX = playerX + 1)
+        : (playerO = playerO + 1);
 
-      if (quantidadeDeItem > 3) {
-        quantidadeDeItem = 0;
+      if (playerX > 3) {
+        playerX = 1;
       }
-
+      if (playerO > 3) {
+        playerO = 1;
+      }
       console.log(
-        "quantidadeDeIte",
-        quantidadeDeItem,
+        "playerX",
+        playerX,
         "classItemdentrodaDiv",
         classItemdentrodaDiv
       );
-      console.log("objDeJogadores", objDeJogadores);
-      if (quantidadeDeItem === 3 && indice <= 2) {
+      if (playerX === 3 && arrayTabuleiro.includes(posicao, 0 && 1 && 2)) {
         alert(`Vencedor: ${classItemdentrodaDiv}`);
       }
-      if (
-        quantidadeDeItem === 3 &&
-        indice === 3 &&
-        indice === 4 &&
-        indice === 5
-      ) {
-        alert(`Vencedor: ${classItemdentrodaDiv}`);
-      }
-      if (
-        quantidadeDeItem === 3 &&
-        indice === 6 &&
-        indice === 7 &&
-        indice === 8
-      ) {
+      if (playerX === 3 && arrayTabuleiro.includes(posicao, 3 && 4 && 5)) {
         alert(`Vencedor: ${classItemdentrodaDiv}`);
       }
 
-      // console.log(posicao.childNodes[0]);
-      // console.log(posicao.classList);
-      // console.log(arrayTabuleiro[indice].lastElementChild.className);
-      // console.log(
-      //   "arrayTabuleiro[indice].lastElementChild",
-      //   arrayTabuleiro[indice].lastElementChild
-      // );
+      if (playerX === 3 && arrayTabuleiro.includes(posicao, 6 && 7 && 8)) {
+        alert(`Vencedor: ${classItemdentrodaDiv}`);
+      }
+      if (playerO === 3 && arrayTabuleiro.includes(posicao, 0 && 1 && 2)) {
+        alert(`Vencedor: ${classItemdentrodaDiv}`);
+      }
+      if (playerO === 3 && arrayTabuleiro.includes(posicao, 3 && 4 && 5)) {
+        alert(`Vencedor: ${classItemdentrodaDiv}`);
+      }
+
+      if (playerO === 3 && arrayTabuleiro.includes(posicao, 6 && 7 && 8)) {
+        alert(`Vencedor: ${classItemdentrodaDiv}`);
+      }
     });
   });
 };
