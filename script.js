@@ -50,36 +50,38 @@ const regrasDoJogo = () => {
       classItemdentrodaDiv === "X"
         ? (playerX = playerX + 1)
         : (playerO = playerO + 1);
-
+      console.log("classItemdentrodaDiv", classItemdentrodaDiv);
       playerX > 3 ? (playerX = 1) : false;
       playerO > 3 ? (playerO = 1) : false;
+      console.log("playerO", playerO);
+      console.log("playerx", playerX);
 
       for (let i = 0; i <= newArray.length; i++) {
         if (
-          playerX === 3 &&
-          newArray[i][0] === "X" &&
+          (playerX === 3 || playerO === 3) &&
+          (newArray[i][0] === "X" || newArray[i][0] === "O") &&
           arrayTabuleiro.includes(posicao, 0 && 1 && 2)
         ) {
           return alert(`Vencedor: ${classItemdentrodaDiv}`);
         }
         if (
-          (playerX === 3 && newArray[i][0] === "X") ||
-          (newArray[i][0] === "O" &&
-            arrayTabuleiro.includes(posicao, 3 && 4 && 5))
+          (playerX === 3 || playerO === 3) &&
+          (newArray[i][0] === "X" || newArray[i][0] === "O") &&
+          arrayTabuleiro.includes(posicao, 3 && 4 && 5)
         ) {
           return alert(`Vencedor: ${classItemdentrodaDiv}`);
         }
         if (
-          (playerX === 3 && newArray[i][0] === "X") ||
-          (newArray[i][0] === "O" &&
-            arrayTabuleiro.includes(posicao, 6 && 7 && 8))
+          (playerX === 3 || playerO === 3) &&
+          (newArray[i][0] === "X" || newArray[i][0] === "O") &&
+          arrayTabuleiro.includes(posicao, 6 && 7 && 8)
         ) {
           return alert(`Vencedor: ${classItemdentrodaDiv}`);
         }
         if (
-          (playerX === 3 && newArray[i][0] === "X") ||
-          (newArray[i][0] === "O" &&
-            arrayTabuleiro.includes(posicao, 6 && 7 && 8))
+          (playerX === 3 || playerO === 3) &&
+          (newArray[i][0] === "X" || newArray[i][0] === "O") &&
+          arrayTabuleiro.includes(posicao, 6 && 7 && 8)
         ) {
           return alert(`Vencedor: ${classItemdentrodaDiv}`);
         }
@@ -88,3 +90,5 @@ const regrasDoJogo = () => {
   });
 };
 regrasDoJogo();
+
+//resolver bug com playerX === 3
