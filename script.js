@@ -4,8 +4,6 @@ const filaDois = document.querySelectorAll(".box-dois");
 const filaTres = document.querySelectorAll(".box-tres");
 let arrayTabuleiro = [...tab];
 let quantidadeDeClicks = 0;
-let playerX = 0;
-let playerO = 0;
 
 const players = () => {
   arrayTabuleiro.forEach((posicao) => {
@@ -37,54 +35,56 @@ const players = () => {
 players();
 
 const regrasDoJogo = () => {
+  let playerX = 0;
+  let playerO = 0;
+  let newArray = [];
   arrayTabuleiro.forEach((posicao) => {
     posicao.addEventListener("click", function () {
       const indice = arrayTabuleiro.indexOf(posicao);
-      console.log("indice", indice);
       const classItemdentrodaDiv =
         arrayTabuleiro[indice].lastElementChild.className;
-      console.log("arrayTabuleiro[indice]");
+      newArray.push([classItemdentrodaDiv, indice]);
+
+      console.log("newArray", newArray);
 
       classItemdentrodaDiv === "X"
         ? (playerX = playerX + 1)
         : (playerO = playerO + 1);
 
-      if (playerX > 3) {
-        playerX = 1;
-      }
-      if (playerO > 3) {
-        playerO = 1;
-      }
-      console.log(
-        "playerX",
-        playerX,
-        "classItemdentrodaDiv",
-        classItemdentrodaDiv
-      );
-      if (playerX === 3 && arrayTabuleiro.includes(posicao, 0 && 1 && 2)) {
-        alert(`Vencedor: ${classItemdentrodaDiv}`);
-      }
-      if (playerX === 3 && arrayTabuleiro.includes(posicao, 3 && 4 && 5)) {
-        alert(`Vencedor: ${classItemdentrodaDiv}`);
-      }
+      playerX > 3 ? (playerX = 1) : false;
+      playerO > 3 ? (playerO = 1) : false;
 
-      if (playerX === 3 && arrayTabuleiro.includes(posicao, 6 && 7 && 8)) {
-        alert(`Vencedor: ${classItemdentrodaDiv}`);
-      }
-      if (playerO === 3 && arrayTabuleiro.includes(posicao, 0 && 1 && 2)) {
-        alert(`Vencedor: ${classItemdentrodaDiv}`);
-      }
-      if (playerO === 3 && arrayTabuleiro.includes(posicao, 3 && 4 && 5)) {
-        alert(`Vencedor: ${classItemdentrodaDiv}`);
-      }
-
-      if (playerO === 3 && arrayTabuleiro.includes(posicao, 6 && 7 && 8)) {
-        alert(`Vencedor: ${classItemdentrodaDiv}`);
+      for (let i = 0; i <= newArray.length; i++) {
+        if (
+          playerX === 3 &&
+          newArray[i][0] === "X" &&
+          arrayTabuleiro.includes(posicao, 0 && 1 && 2)
+        ) {
+          return alert(`Vencedor: ${classItemdentrodaDiv}`);
+        }
+        if (
+          (playerX === 3 && newArray[i][0] === "X") ||
+          (newArray[i][0] === "O" &&
+            arrayTabuleiro.includes(posicao, 3 && 4 && 5))
+        ) {
+          return alert(`Vencedor: ${classItemdentrodaDiv}`);
+        }
+        if (
+          (playerX === 3 && newArray[i][0] === "X") ||
+          (newArray[i][0] === "O" &&
+            arrayTabuleiro.includes(posicao, 6 && 7 && 8))
+        ) {
+          return alert(`Vencedor: ${classItemdentrodaDiv}`);
+        }
+        if (
+          (playerX === 3 && newArray[i][0] === "X") ||
+          (newArray[i][0] === "O" &&
+            arrayTabuleiro.includes(posicao, 6 && 7 && 8))
+        ) {
+          return alert(`Vencedor: ${classItemdentrodaDiv}`);
+        }
       }
     });
   });
 };
 regrasDoJogo();
-
-//criar um objeto onde o indice é a posicao e o valor é classItemdentrodaDiv
-// criar array com array dentro com duas posições: posicao e classItemdentrodaDiv
