@@ -92,3 +92,4 @@ const regrasDoJogo = () => {
 regrasDoJogo();
 
 //resolver bug com playerX === 3
+//3 playes na mesma linha e n quantidade de existencia
